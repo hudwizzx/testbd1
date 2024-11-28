@@ -35,12 +35,18 @@ namespace testbd
 
                 // Привязка DataTable к DataGrid
                 requestDataGrid.ItemsSource = requestDataTable.DefaultView;
+                UpdateRequestCounter(requestDataTable.Rows.Count);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
             }
         }
+        private void UpdateRequestCounter(int count)
+        {
+            RequestCounterTextBlock.Text = $"Количество заявок: {count}";
+        }
+
 
         private void requestDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
